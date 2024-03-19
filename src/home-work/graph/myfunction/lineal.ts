@@ -38,14 +38,7 @@ export class Lineal implements Function {
   public evaluate(pointToEvaluate: number): number {
     return -this.slope * pointToEvaluate - this.constant;
   }
-/**
-   * @descripcion This method calculates the string representation of the function.
-   * @no_param  
-   * @return This method returns the string representation of the function
-*/
-  public toString(): string {
-    return `${this.slope}x + ${this.constant}`;
-  }
+  
 /**
    * @descripcion This method draws the function in a given canvas context.
    * @no_param  
@@ -55,18 +48,13 @@ export class Lineal implements Function {
     context.beginPath();
     context.strokeStyle = 'red';
     context.lineWidth = 2;
-
-    // Calcular las coordenadas del punto inicial y final de la línea
+    context.setLineDash([5, 10]);
     const xStart = -context.canvas.width / 2;
     const xEnd = context.canvas.width / 2;
     const yStart = this.evaluate(xStart / this.scale) * this.scale;
     const yEnd = this.evaluate(xEnd / this.scale) * this.scale;
-
-    // Mover al punto inicial y trazar la línea al punto final
     context.moveTo(xStart, yStart);
     context.lineTo(xEnd, yEnd);
-
-    // Dibujar la línea
     context.stroke();
   }
 }

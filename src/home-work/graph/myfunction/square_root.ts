@@ -39,14 +39,6 @@ export class SquareRoot implements Function {
   public evaluate(pointToEvaluate: number): number {
     return -this.slope * Math.sqrt(pointToEvaluate) + this.constant;
   }
-/**
-   * @descripcion This method calculates the string representation of the function.
-   * @no_param  
-   * @return This method returns the string representation of the function
-*/
-  public toString(): string {
-    return `${this.slope} * sqrt(x) + ${this.constant}`;
-  }
 
 /**
    * @descripcion This method draws the function in a given canvas context.
@@ -58,6 +50,7 @@ export class SquareRoot implements Function {
     context.beginPath();
     context.strokeStyle = "red";
     context.lineWidth = 2;
+    context.setLineDash([5, 10]);
     const xStart = -context.canvas.width / 2;
     const xEnd = context.canvas.width / 2;
     for (let actualX = xStart; actualX < xEnd; actualX = actualX + this.scale / JUMPEVALUATION) {

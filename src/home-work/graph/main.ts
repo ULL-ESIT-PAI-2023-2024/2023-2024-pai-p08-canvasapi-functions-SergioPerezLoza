@@ -25,7 +25,7 @@ import { View } from './view.js';
 function main() {
   const PROPORTIONSCALE = 40;
   let view: View = new View(PROPORTIONSCALE);
-  let functionToCalculate: string = 'sqrt';
+  let functionToCalculate: string = 'polynomial';
   view.initialize();
 
   switch (functionToCalculate) {
@@ -33,24 +33,24 @@ function main() {
       const lineal = new Lineal(PROPORTIONSCALE, 0, 1);
       view.drawFunction(lineal);
       break;
+    case 'sqrt':
+      const square = new SquareRoot(PROPORTIONSCALE, 1, 0);
+      view.drawFunction(square);
+      break;
     case 'exponential':
       const exponential = new Exponential(PROPORTIONSCALE, 1, 2, 0);
       view.drawFunction(exponential);
       break;
-    case 'sin':
-      const sin = new Sine(PROPORTIONSCALE, 1, 1, 0);
-      view.drawFunction(sin);
-      break;
-    case 'sqrt':
-      const square = new SquareRoot(PROPORTIONSCALE, 1, 0);
-      view.drawFunction(square);
+    case 'sine':
+      const sine = new Sine(PROPORTIONSCALE, 1, 1, 0);
+      view.drawFunction(sine);
       break;
     case 'polynomial':
       const polynomial = new Polynomial(PROPORTIONSCALE, [1, 0, 1]);
       view.drawFunction(polynomial);
       break;
     default:
-      console.log('Invalid function selection');
+      console.log('This function does not exists. Please, select another one.');
   }
 }
 

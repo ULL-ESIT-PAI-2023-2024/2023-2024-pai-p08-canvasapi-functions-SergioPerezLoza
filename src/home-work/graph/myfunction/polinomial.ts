@@ -43,29 +43,6 @@ export class Polynomial implements Function {
   }
 
 /**
-   * @descripcion This method returns the string representation of the function.
-   * @no_param  
-   * @return This method returns the string representation of the function
-*/
-  toString(): string {
-    let str = '';
-    for (let i = 0; i < this.coefficients.length; i++) {
-      if (this.coefficients[i] !== 0) {
-        if (i > 0) {
-          str += (this.coefficients[i] > 0 ? ' + ' : ' - ');
-        }
-        if (Math.abs(this.coefficients[i]) !== 1 || i === 0) {
-          str += this.coefficients[i];
-        }
-        if (i > 0) {
-          str += `x^${i}`;
-        }
-      }
-    }
-    return str;
-  }
-
-/**
    * @descripcion This method draws the function in a given canvas context.
    * @param context the canvas context in which the function will be drawn  
    * @return This method does not return anything
@@ -75,6 +52,7 @@ export class Polynomial implements Function {
     context.beginPath();
     context.strokeStyle = "red";
     context.lineWidth = 2;
+    context.setLineDash([5, 10]);
     const xStart = -context.canvas.width / 2;
     const xEnd = context.canvas.width / 2;
     for (let actualX = xStart; actualX < xEnd; actualX = actualX + this.scale / JUMPEVALUATION) {

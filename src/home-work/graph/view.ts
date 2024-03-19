@@ -29,7 +29,6 @@ export class View {
     this.scale = scale;
     this.context.translate(this.canvas.width / 2, this.canvas.height / 2);
   }
-
 /**
    * @descripcion This method initializes the grid in the canvas.
    * @no_param  
